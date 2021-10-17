@@ -1,0 +1,58 @@
+.nate-team-container{
+  padding-right: 15px;
+  padding-left: 15px;
+  .nate-team-content{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    margin-top: 0 !important;
+    border-radius: 0.25rem;
+    .nate-team-header{
+      padding: 1.75rem 1.25rem;
+      margin-bottom: 0;
+      &:first-child{
+        border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+      }
+    }
+    .nate-team-body{
+      flex: 1 1 auto;
+      padding: 1.25rem;
+      justify-content: space-between;
+      border-top: none;
+      .nate-team-children{
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 5px;
+        .nate-team-label{
+          cursor: pointer;
+        }
+        .nate-team-span{
+          font-size: small;
+          font-weight: 400;
+        }
+      }
+    }
+    .nate-team-footer{
+      padding: 0.75rem 1.25rem;
+      background-color: #f0f3f5;
+      border-top: 0 solid #c8ced3;
+      .nate-team-children{
+        flex-direction: row;
+        justify-content: space-between;
+        .nate-team-label{
+          cursor: pointer;
+        }
+        .nate-team-span{
+          font-size: small;
+          font-weight: 400;
+          text-align: center;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

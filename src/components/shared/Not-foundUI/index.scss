@@ -1,0 +1,88 @@
+#nate-team-not-found {
+  position: relative;
+  height: calc(100vh - 6rem);
+  .nate-team-not-found {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    max-width: 910px;
+    width: 100%;
+    line-height: 1.4;
+    text-align: center;
+    padding: 1rem;
+    .nate-team-not-found-404 {
+      position: relative;
+      height: 200px;
+      h1 {
+        font-family: 'Montserrat', sans-serif;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        font-size: 10rem;
+        font-weight: 900;
+        margin: 0px;
+        color: #0873ba;
+        text-transform: uppercase;
+        letter-spacing: 10px;
+      }
+    }
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #0873ba;
+      margin-top: 1.1rem;
+      margin-bottom: 1rem;
+    }
+    .nate-team-home-btn {
+      font-family: 'Montserrat', sans-serif;
+      display: inline-block;
+      font-weight: 700;
+      text-decoration: none;
+      background-color: transparent;
+      border: 2px solid transparent;
+      text-transform: uppercase;
+      padding: 1rem;
+      font-size: 1rem;
+      border-radius: 3rem;
+      margin: 0.5rem;
+      -webkit-transition: 0.2s all;
+      transition: 0.2s all;
+      color: #ffffff;
+      background: #0873ba;
+      white-space: nowrap;
+      text-align: center;
+      margin: auto;
+      &:hover{
+        opacity: 0.9;
+      }
+    }
+    @media only screen and (max-width: 767px) {
+      .nate-team-not-found .nate-team-not-found-404 h1 {
+        font-size: 11.375rem;
+      }
+    }
+    
+    @media only screen and (max-width: 480px) {
+      .nate-team-not-found .nate-team-not-found-404 {
+        height: 9.125rem;
+      }
+      .nate-team-not-found .nate-team-not-found-404 h1 {
+        font-size: 9.125rem;
+      }
+      .nate-team-not-found h2 {
+        font-size: 1rem;
+      }
+      .nate-team-not-found .nate-team-home-btn {
+        font-size: 0.875rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+export const ActionType = {
+  GET_BRANDS: 'brand/GET_BRANDS',
+  GET_BRAND: 'brand/GET_BRAND',
+  FIELD_CHANGE: 'brand/FIELD_CHANGE',
+  SHOW_NOTIFICATION: 'brand/SHOW_NOTIFICATION',
+  HIDE_NOTIFICATION: 'brand/HIDE_NOTIFICATION',
+};

@@ -1,0 +1,72 @@
+.nate-team-dropdown-pagination {
+  .ms-Dropdown-title {
+    border: 1px solid #ddd !important;
+    border-left: none;
+    border-radius: 0;
+  }
+}
+.nate-team-pagination > li > button,
+.nate-team-pagination > li > span {
+	border-radius: 0px;
+	position: relative;
+	float: left;
+	padding: 6px 12px;
+	margin-left: -1px;
+	line-height: 1.42857143;
+	color: #337ab7;
+	text-decoration: none;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	outline: 0;
+}
+
+.nate-team-pagination > li > button:hover,
+.nate-team-pagination > li > span:hover,
+.nate-team-pagination > li > button:focus,
+.nate-team-pagination > li > span:focus {
+	z-index: 2;
+	color: #23527c;
+	background-color: #eee;
+	border-color: #ddd;
+}
+
+.nate-team-pagination > li > button.active,
+.nate-team-pagination > li > span.active,
+.nate-team-pagination > li > button.active:hover,
+.nate-team-pagination > li > span.active:hover,
+.nate-team-pagination > li > button.active:focus,
+.nate-team-pagination > li > span.active:focus {
+	z-index: 3;
+	color: #fff;
+	cursor: default;
+	background-color: #007bff;
+	border-color: #007bff;
+}
+
+.nate-team-pagination > li > span:disabled,
+.nate-team-pagination > li > span:disabled:hover,
+.nate-team-pagination > li > span:disabled:focus,
+.nate-team-pagination > li > button:disabled,
+.nate-team-pagination > li > button:disabled:hover,
+.nate-team-pagination > li > button:disabled:focus {
+	color: #777;
+	cursor: not-allowed;
+	background-color: #fff;
+	border-color: #ddd;
+}
+
+.nate-team-pagination {
+	margin: 0 0 0 10px;
+  display: flex;
+  list-style: none;
+}
+
+.nate-team-button-page {
+	width: 44px !important;
+	min-width: 30px;
+}
+
+.nate-team-button-page-2 {
+	width: 38px !important;
+	min-width: 30px;
+}

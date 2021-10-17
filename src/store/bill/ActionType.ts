@@ -1,0 +1,7 @@
+export const ActionType = {
+  GET_BILLS: 'bill/GET_BILLS',
+  GET_BILL: 'bill/GET_BILL',
+  FIELD_CHANGE: 'bill/FIELD_CHANGE',
+  SHOW_NOTIFICATION: 'bill/SHOW_NOTIFICATION',
+  HIDE_NOTIFICATION: 'bill/HIDE_NOTIFICATION',
+};

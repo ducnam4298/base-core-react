@@ -1,0 +1,58 @@
+// FORM CONTROLS
+
+.nate-team-form-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .nate-team-left-form {
+      width: 66.6%;
+      padding: 0 0.5rem;
+      transition: width 0.1s;
+    }
+    .nate-team-btn-toggle {
+      padding: 0 0.5rem;
+      margin: 2.5rem 0.3rem 0;
+    }
+    .nate-team-right-form {
+      width: 33.3%;
+      padding: 0 0.5rem;
+      transition: width 0.1s;
+      .nate-team-right-box {
+        margin: 1rem 0;
+        box-shadow: 0 2px 6px #0000001f;
+        border-radius: 0px 0px 5px 5px;
+        .ms-Button-flexContainer i {
+          font-size: 10px;
+        }
+        .nate-team-box-hidden {
+          height: 0;
+          transition: height 0.2s;
+          padding: 0;
+        }
+        .nate-team-box-show {
+          height: auto;
+          transition: height 0.2s;
+          padding: 0rem 0.5rem 1rem;
+        }
+      }
+    }
+    .nate-team-w-left-hidden {
+      width: calc(100% - 60px);
+      transition: width 0.1s;
+    }
+    .nate-team-w-right-hidden {
+      max-width: 60px;
+      transition: width 0.1s;
+    }
+  }
+  
+  @media (max-width: 991px) {
+    .nate-team-form-wrapper {
+      flex-direction: column;
+      .nate-team-left-form,
+      .nate-team-right-form {
+        width: 100%;
+      }
+    }
+  }
+  

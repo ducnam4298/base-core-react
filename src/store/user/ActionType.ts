@@ -1,0 +1,7 @@
+export const ActionType = {
+  GET_USERS: 'user/GET_USERS',
+  GET_USER: 'user/GET_USER',
+  FIELD_CHANGE: 'user/FIELD_CHANGE',
+  SHOW_NOTIFICATION: 'user/SHOW_NOTIFICATION',
+  HIDE_NOTIFICATION: 'user/HIDE_NOTIFICATION',
+};

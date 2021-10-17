@@ -1,0 +1,7 @@
+export const ActionType = {
+  GET_DELIVERIES: 'delivery/GET_DELIVERIES',
+  GET_DELIVERY: 'delivery/GET_DELIVERY',
+  FIELD_CHANGE: 'delivery/FIELD_CHANGE',
+  SHOW_NOTIFICATION: 'delivery/SHOW_NOTIFICATION',
+  HIDE_NOTIFICATION: 'delivery/HIDE_NOTIFICATION',
+};

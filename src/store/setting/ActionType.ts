@@ -1,0 +1,5 @@
+export const ActionType = {
+  FIELD_CHANGE: 'setting/FIELD_CHANGE',
+  SHOW_NOTIFICATION: 'setting/SHOW_NOTIFICATION',
+  HIDE_NOTIFICATION: 'setting/HIDE_NOTIFICATION',
+};

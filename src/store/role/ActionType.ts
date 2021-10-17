@@ -1,0 +1,7 @@
+export const ActionType = {
+  GET_ROLES: 'role/GET_ROLES',
+  GET_ROLE: 'role/GET_ROLE',
+  FIELD_CHANGE: 'role/FIELD_CHANGE',
+  SHOW_NOTIFICATION: 'role/SHOW_NOTIFICATION',
+  HIDE_NOTIFICATION: 'role/HIDE_NOTIFICATION',
+};

@@ -1,0 +1,9 @@
+.nate-team-modal-ui {
+  .ms-Dialog-main {
+    .ms-Modal-scrollableContent {
+      button:focus {
+        outline: none !important;
+      }
+    }
+  }
+}
