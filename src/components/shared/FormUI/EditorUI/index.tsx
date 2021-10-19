@@ -25,10 +25,8 @@ const EditorUI = (props: UIProps) => {
         apiKey="z1mntph9svsj9hxj92tnwn79zsuoj0w8v3849cw1e1q27u14"
         initialValue={formik.values[control.id]}
         init={{
-          skin: 'snow',
-          icons: 'thin',
+          skin_url: "./index.scss",
           placeholder: control.placeholder,
-          font_css: "./index.scss",
           height: 400,
           menubar: true,
           plugins: [
@@ -37,12 +35,14 @@ const EditorUI = (props: UIProps) => {
             'insertdatetime media table paste code help wordcount',
           ],
           textcolor_rows: '4',
+          keep_styles: false,
           toolbar:
             'undo redo | styleselect | fontsizeselect| code | bold italic | alignleft aligncenter alignright alignjustify | outdent indent ',
         }}
         onEditorChange={onChangeEditor}
         outputFormat="html"
         toolbar="code"
+
       />
       {errorMessage && <ErrorMessageUI message={errorMessage(control.id)} />}
     </>
