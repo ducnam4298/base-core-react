@@ -15,10 +15,10 @@ export interface State {
 }
 const InitState: State = {
   language: clientStorage.get('I18nLang') === 'en' ? 'en' : 'fr',
-  app: 'Tyrant-Phone',
+  app: 'Flash-Mobile',
   theme: 'Default',
   loading: false,
-  isAuthenticated: clientStorage.get('tyrant-phone-cms') ? true : false,
+  isAuthenticated: clientStorage.get('flash-mobile-cms') ? true : false,
   user: sessionStorage.get('user') ?? null,
   siteConfiguration: sessionStorage.get('config') ?? null,
   languages: sessionStorage.get('lng') ?? null,

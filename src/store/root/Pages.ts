@@ -12,8 +12,8 @@ const screens: any = {
   Home: 'home/home',
 
   Self: 'self/home',
-  SignIn: 'auth/sign-in',
-  SignUp: 'auth/sign-up',
+  Signin: 'auth/signin',
+  Signup: 'auth/signup',
   Forgot: 'auth/forgot',
   Active: 'auth/active',
   Confirm: 'auth/confirm',

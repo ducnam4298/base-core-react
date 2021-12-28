@@ -122,6 +122,15 @@ type KnownAction =
 //#endregion
 //#region ActionCreators
 export const ActionCreators = {
+  FieldChange:
+    (fieldName: string, fieldValue?: any): ThunkAction<KnownAction> =>
+    async (dispatch, getState) => {
+      dispatch({
+        type: ActionType.FIELD_CHANGE,
+        fieldName: fieldName,
+        fieldValue: fieldValue,
+      });
+    },
   Loading: (): ThunkAction<KnownAction> => (dispatch, getState) => {
     const actionState = getState();
     if (actionState && actionState.ContextState && !actionState.ContextState.loading) {
@@ -138,51 +147,17 @@ export const ActionCreators = {
       });
     }
   },
-  ChangeLanguage:
-    (language?: string): ThunkAction<KnownAction> =>
-    async (dispatch, getState) => {
-      try {
-        const actionState = getState();
-        await client.put(Endpoint.LANGUAGE_USER_URL, { language });
-        if (
-          actionState &&
-          actionState.ContextState &&
-          actionState.ContextState.language !== language
-        ) {
-          //   dispatch(setLocale(language));
-          clientStorage.set('I18nLang', language);
-          dispatch({
-            type: ActionType.CHANGE_LANGUAGE,
-            language: language,
-          });
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    },
-  ChangeTheme:
-    (theme: string): ThunkAction<KnownAction> =>
-    (dispatch, getState) => {
-      const actionState = getState();
-      if (actionState && actionState.ContextState && actionState.ContextState.theme !== theme) {
-        dispatch({
-          type: ActionType.CHANGE_LANGUAGE,
-          theme: theme,
-        });
-      }
-    },
-
   SwitchAuthenticated:
-    (action: SwitchAuthenticated, dataItem?: any, cb?: any): ThunkAction<KnownAction> =>
+    (action: SwitchAuthenticated, items?: any, cb?: Function): ThunkAction<KnownAction> =>
     (dispatch, getState) => {
       if (action === SwitchAuthenticated.LOGGEDIN) {
-        clientStorage.set('sp-afro4isc', dataItem.accessToken);
-        clientStorage.set('rt-afro4isc', dataItem.refreshToken);
-        setToken(dataItem.accessToken);
+        clientStorage.set('sp-flash', items.accessToken);
+        clientStorage.set('rt-flash', items.refreshToken);
+        setToken(items.accessToken);
         cb && cb();
       } else {
-        clientStorage.remove('sp-afro4isc');
-        clientStorage.remove('rt-afro4isc');
+        clientStorage.remove('sp-flash');
+        clientStorage.remove('rt-flash');
         sessionStorage.clear();
         dispatch({
           type: ActionType.GET_DATA_USER,
@@ -200,67 +175,56 @@ export const ActionCreators = {
         action,
       });
     },
-
-  GetSiteConfiguration: (): ThunkAction<KnownAction> => async (dispatch, getState) => {
-    const res = await client.get(`${Endpoint.CONFIGURATION_URL}/all`);
+  GetDataUser: (): ThunkAction<KnownAction> => async (dispatch, getState) => {
+    const res = await client.get(`${Endpoint.ADMIN_URL}/profile`);
     if (res?.status === 200) {
-      const data = (res?.data ?? [])?.map((item: any) => {
-        return {
-          configName: item.configName,
-          configValue: item.configValue,
-        };
-      });
-      sessionStorage.set('cf', data);
+      sessionStorage.set('us', res.data);
       dispatch({
-        type: ActionType.GET_CONFIGURATION,
-        configs: data,
+        type: ActionType.GET_DATA_USER,
+        user: res.data,
       });
-      // ActionCreators.UpdateSiteConfiguration(res?.data)
     } else {
       ActionCreators.SwitchAuthenticated(SwitchAuthenticated.LOGGEDOUT);
     }
   },
-
-  GetLanguage: (): ThunkAction<KnownAction> => async (dispatch, getState) => {
-    const res = await client.get(`${Endpoint.LANGUAGE_URL}/all`);
-    if (res?.status === 200) {
-      let en = {},
-        fr = {};
-      res?.data?.length &&
-        res.data.forEach((item:any) => {
-          en[item.key] = item.valueEn;
-          fr[item.key] = item.valueFr;
-        });
-      sessionStorage.set('lng', { fr, en });
-      //   dispatch(loadTranslations({ fr, en }));
-      dispatch({
-        type: ActionType.GET_LANGUAGE,
-        languages: { en, fr },
-      });
-    }
-  },
-
-  FieldChange:
-    (fieldName: string, fieldValue?: any): ThunkAction<KnownAction> =>
+  GetRolesUser:
+    (permissions: any): ThunkAction<KnownAction> =>
     async (dispatch, getState) => {
+      sessionStorage.set('pms', permissions);
       dispatch({
-        type: ActionType.FIELD_CHANGE,
-        fieldName: fieldName,
-        fieldValue: fieldValue,
+        type: ActionType.GET_ROLES_USER,
+        permissions: permissions,
       });
     },
+  // GetSiteConfiguration: (): ThunkAction<KnownAction> => async (dispatch, getState) => {
+  //   const res = await client.get(`${Endpoint.CONFIGURATION_URL}/all`);
+  //   if (res?.status === 200) {
+  //     const data = (res?.data ?? [])?.map((item: any) => {
+  //       return {
+  //         configName: item.configName,
+  //         configValue: item.configValue,
+  //       };
+  //     });
+  //     sessionStorage.set('cf', data);
+  //     dispatch({
+  //       type: ActionType.GET_CONFIGURATION,
+  //       configs: data,
+  //     });
+  //     // ActionCreators.UpdateSiteConfiguration(res?.data)
+  //   } else {
+  //     ActionCreators.SwitchAuthenticated(SwitchAuthenticated.LOGGEDOUT);
+  //   }
+  // },
 };
-//#endregion
-const initState = InitState;
 
 export const Reducer: ReduxReducer<State, KnownAction> = (
   state: State | undefined,
   incomingAction: KnownAction
 ): State => {
   if (state === undefined) {
-    return initState;
+    return InitState;
   }
-  let action;
+  let action: any;
   switch (incomingAction.type) {
     case ActionType.LOADING:
       action = incomingAction as LoadingAction;

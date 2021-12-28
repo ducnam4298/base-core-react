@@ -22,6 +22,12 @@ const RoutesMap: RoutesProps = {
   SplashWaiting: {
     path: '/splash-waiting',
   },
+  Signin: {
+    path: '/sign-in',
+  },
+  Signup: {
+    path: '/sign-up',
+  },
   Home: {
     path: '/',
     required: ['auth'],
@@ -46,7 +52,6 @@ const RoutesMap: RoutesProps = {
       });
     },
   },
-
   SignIn: {
     path: '/sign-in',
   },
