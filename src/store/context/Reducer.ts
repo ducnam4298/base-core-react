@@ -3,7 +3,7 @@ import { clientStorage, sessionStorage } from 'constant/clientStorage';
 import { Reducer as ReduxReducer } from 'redux';
 import { ActionType } from './ActionType';
 import { SwitchAuthenticated, IUser } from 'models/context';
-import InitState, { State } from './InitState';
+import { InitState, State } from './InitState';
 
 import { client, setToken, clearToken } from 'api/client';
 
@@ -11,16 +11,6 @@ import { Endpoint } from 'api';
 // import { loadTranslations, setLocale } from 'react-redux-i18n';
 import { ThunkAction } from 'store';
 //#region declare actions
-interface ChangeLanguageAction {
-  type: string;
-  language: string;
-}
-
-interface ChangeThemeAction {
-  type: string;
-  theme: string;
-}
-
 interface SwitchRoleAction {
   type: string;
   roleId: number;
@@ -50,25 +40,6 @@ interface RequestItemAction {
   itemId: number | string | undefined;
 }
 
-interface FormFieldChangeAction {
-  type: string;
-  dataType: string;
-  fieldName: string;
-  fieldValue: any;
-}
-
-interface NewFormAction {
-  type: string;
-  dataType: string;
-  schema?: any;
-}
-
-interface UpdateFormAction {
-  type: string;
-  dataType: string;
-  item: any;
-}
-
 interface SwitchAuthenticatedAction {
   type: string;
   action: SwitchAuthenticated;
@@ -90,11 +61,6 @@ interface GetRolesUserAction {
   permissions?: any[];
 }
 
-interface GetLanguageAction {
-  type: string;
-  languages: any;
-}
-
 interface FieldChangAction {
   type: string;
   fieldName: string;
@@ -102,22 +68,16 @@ interface FieldChangAction {
 }
 
 type KnownAction =
-  | ChangeLanguageAction
-  | ChangeThemeAction
   | SwitchRoleAction
   | SwitchAppAction
   | LoadingAction
   | LoadedAction
   | RequestItemsAction
   | RequestItemAction
-  | FormFieldChangeAction
-  | NewFormAction
-  | UpdateFormAction
   | SwitchAuthenticatedAction
   | GetDataUserAction
   | GetConfigurationAction
   | GetRolesUserAction
-  | GetLanguageAction
   | FieldChangAction;
 //#endregion
 //#region ActionCreators
@@ -238,19 +198,6 @@ export const Reducer: ReduxReducer<State, KnownAction> = (
         ...state,
         loading: false,
       };
-    case ActionType.CHANGE_LANGUAGE:
-      action = incomingAction as ChangeLanguageAction;
-      return {
-        ...state,
-        language: action.language,
-      };
-    case ActionType.CHANGE_THEME:
-      action = incomingAction as ChangeThemeAction;
-      return {
-        ...state,
-        language: action.theme,
-      };
-
     case ActionType.REQUEST_ITEMS:
       action = incomingAction as RequestItemsAction;
       // update loading here ...
@@ -278,36 +225,6 @@ export const Reducer: ReduxReducer<State, KnownAction> = (
         ...state,
         [action.fieldName]: action.fieldValue,
       };
-    case ActionType.FORM_FIELD_CHANGE:
-      action = incomingAction as FormFieldChangeAction;
-      return {
-        ...state,
-        item: {
-          ...state.item,
-          [action.dataType]: {
-            ...state.item?.[action.dataType],
-            [action.fieldName]: action.fieldValue,
-          },
-        },
-      };
-    case ActionType.NEW_FORM:
-      action = incomingAction as NewFormAction;
-      return {
-        ...state,
-        item: {
-          ...state.item,
-          [action.dataType]: {},
-        },
-      };
-    case ActionType.UPDATE_FORM:
-      action = incomingAction as UpdateFormAction;
-      return {
-        ...state,
-        item: {
-          ...state.item,
-          [action.dataType]: action.item,
-        },
-      };
     case ActionType.SWITCH_AUTHENTICATED:
       action = incomingAction as SwitchAuthenticatedAction;
       if (action.action === SwitchAuthenticated.LOGGEDIN) {
@@ -319,8 +236,7 @@ export const Reducer: ReduxReducer<State, KnownAction> = (
         return {
           ...state,
           isAuthenticated: false,
-          //   user: undefined,
-          languages: [],
+          user: undefined,
           permissions: [],
         };
       }
@@ -328,7 +244,7 @@ export const Reducer: ReduxReducer<State, KnownAction> = (
       action = incomingAction as GetDataUserAction;
       return {
         ...state,
-        // user: action.user,
+        user: action.user,
       };
     case ActionType.GET_CONFIGURATION:
       action = incomingAction as GetConfigurationAction;
@@ -341,12 +257,6 @@ export const Reducer: ReduxReducer<State, KnownAction> = (
       return {
         ...state,
         permissions: action.permissions,
-      };
-    case ActionType.GET_LANGUAGE:
-      action = incomingAction as GetLanguageAction;
-      return {
-        ...state,
-        languages: action.languages,
       };
     default:
       return {

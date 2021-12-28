@@ -1,7 +1,7 @@
 import { clientStorage, sessionStorage } from 'constant/clientStorage';
+import { Permissions } from 'models/role';
 import { User } from 'models/user';
 export interface State {
-  language?: string;
   theme?: string;
   app?: string;
   isAuthenticated?: boolean;
@@ -9,18 +9,14 @@ export interface State {
   listItems?: {};
   item?: {};
   siteConfiguration?: any[];
-  permissions?: any[];
-  languages: any;
+  permissions?: Permissions[];
   user?: User;
 }
-const InitState: State = {
-  language: clientStorage.get('I18nLang') === 'en' ? 'en' : 'fr',
+export const InitState: State = {
   app: 'Flash-Mobile',
   theme: 'Default',
   loading: false,
   isAuthenticated: clientStorage.get('flash-mobile-cms') ? true : false,
   user: sessionStorage.get('user') ?? null,
   siteConfiguration: sessionStorage.get('config') ?? null,
-  languages: sessionStorage.get('lng') ?? null,
 };
-export default InitState;
