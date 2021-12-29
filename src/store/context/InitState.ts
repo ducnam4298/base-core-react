@@ -1,26 +1,20 @@
 import { clientStorage, sessionStorage } from 'constant/clientStorage';
+import { Permission } from 'models/role';
+import { IFormContext, InitFormContexts } from 'models/shared';
 import { User } from 'models/user';
 export interface State {
-  language?: string;
-  theme?: string;
   app?: string;
   isAuthenticated?: boolean;
-  loading: boolean;
-  listItems?: {};
-  item?: {};
   siteConfiguration?: any[];
-  permissions?: any[];
-  languages: any;
+  permissions?: Permission[];
   user?: User;
+  formContext?: IFormContext;
 }
-const InitState: State = {
-  language: clientStorage.get('I18nLang') === 'en' ? 'en' : 'fr',
-  app: 'Tyrant-Phone',
-  theme: 'Default',
-  loading: false,
-  isAuthenticated: clientStorage.get('tyrant-phone-cms') ? true : false,
-  user: sessionStorage.get('user') ?? null,
+export const InitState: State = {
+  app: 'Flash-Mobile',
+  isAuthenticated: clientStorage.get('flash-cms') ? true : false,
   siteConfiguration: sessionStorage.get('config') ?? null,
-  languages: sessionStorage.get('lng') ?? null,
+  permissions: [],
+  user: sessionStorage.get('user') ?? null,
+  formContext: InitFormContexts,
 };
-export default InitState;

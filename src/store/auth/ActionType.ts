@@ -1,0 +1,6 @@
+export const ActionType = {
+  FIELD_CHANGE: 'auth/FIELD_CHANGE',
+  SHOW_NOTIFICATION: 'auth/SHOW_NOTIFICATION',
+  HIDE_NOTIFICATION: 'auth/HIDE_NOTIFICATION',
+  SIGNIN: 'auth/SIGNIN',
+};

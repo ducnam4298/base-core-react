@@ -17,3 +17,8 @@ export const InitAccount: Account = {
   phoneNumber: '',
   address: '',
 };
+
+export const InitSignin: Account = {
+  email: undefined,
+  password: undefined,
+};

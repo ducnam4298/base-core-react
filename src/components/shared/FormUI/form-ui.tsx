@@ -332,25 +332,29 @@ const FormUI = (props: Props) => {
   };
   return (
     <>
-      <div key={'form-wrapper'} className="nate-team-form-wrapper">
-        <div className={`nate-team-left-form ${!isShow ? 'nate-team-w-left-hidden' : ''}`}>
-          {FormControls(0)}
+      {props.listRightOptions ? (
+        <div key={'form-wrapper'} className="nate-team-form-wrapper">
+          <div className={`nate-team-left-form ${!isShow ? 'nate-team-w-left-hidden' : ''}`}>
+            {FormControls(0)}
+          </div>
+          <div className={`nate-team-right-form ${!isShow ? 'nate-team-w-right-hidden' : ''}`}>
+            <DefaultButton
+              styles={{
+                root: {
+                  minWidth: 'auto',
+                },
+              }}
+              className="nate-team-btn-toggle"
+              onClick={onToggle}
+              text={isShow ? 'Hide' : undefined}
+              iconProps={{ iconName: isShow ? 'Combine' : 'Split' }}
+            />
+            {isShow && <div className="nate-team-box-list">{rightBox()}</div>}
+          </div>
         </div>
-        <div className={`nate-team-right-form ${!isShow ? 'nate-team-w-right-hidden' : ''}`}>
-          <DefaultButton
-            styles={{
-              root: {
-                minWidth: 'auto',
-              },
-            }}
-            className="nate-team-btn-toggle"
-            onClick={onToggle}
-            text={isShow ? 'Hide' : undefined}
-            iconProps={{ iconName: isShow ? 'Combine' : 'Split' }}
-          />
-          {isShow && <div className="nate-team-box-list">{rightBox()}</div>}
-        </div>
-      </div>
+      ) : (
+        FormControls(0)
+      )}
       <ButtonUI
         type={0}
         text={'Save'}

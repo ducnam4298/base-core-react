@@ -8,6 +8,7 @@ import { RoutesMap, options } from 'routes';
 import * as RootReducer from './root';
 import { State as ConfigState, Reducer as ConfigReducer } from './config';
 import { State as ContextState, Reducer as ContextReducer } from './context';
+import { State as AuthState, Reducer as AuthReducer } from './auth';
 import { State as UserState, Reducer as UserReducer } from './user';
 import { State as ProductState, Reducer as ProductReducer } from './product';
 import { State as RoleState, Reducer as RoleReducer } from './role';
@@ -21,6 +22,7 @@ import { State as HomeState, Reducer as HomeReducer } from './home';
 const AllReducers = {
   ConfigState: ConfigReducer,
   ContextState: ContextReducer,
+  AuthState: AuthReducer,
   UserState: UserReducer,
   ProductState: ProductReducer,
   RoleState: RoleReducer,
@@ -37,6 +39,7 @@ export interface ApplicationState {
   location: LocationState;
   ConfigState: ConfigState;
   ContextState: ContextState;
+  AuthState: AuthState;
   UserState: UserState;
   ProductState: ProductState;
   RoleState: RoleState;

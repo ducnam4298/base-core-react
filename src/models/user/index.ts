@@ -17,3 +17,7 @@ export interface User extends Root {
   pob?: string;
   contract?: any;
 }
+
+export interface Token {
+  accessToken?: string;
+}
