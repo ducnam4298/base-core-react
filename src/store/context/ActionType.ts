@@ -1,4 +1,5 @@
 export const ActionType = {
+  LOADING:'context/LOADING',
   SWITCH_APP: 'context/SWITCH_APP',
   SWITCH_AUTHENTICATED: 'context/SWITCH_AUTHENTICATED',
   GET_DATA_USER: 'context/GET_DATA_USER',

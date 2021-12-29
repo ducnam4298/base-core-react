@@ -7,6 +7,7 @@ import { InitFormContexts } from 'models/shared';
 import { Account } from 'models/account';
 import { client, Endpoint } from 'api';
 import { Token } from 'models/user';
+import { IFormAuthAction } from 'models/form';
 
 interface FieldChangeAction {
   type: string;
@@ -51,38 +52,45 @@ export const ActionCreators = {
       type: ActionType.HIDE_NOTIFICATION,
     });
   },
-  Signin:
-    (item?: Account): ThunkAction<KnownAction> =>
+  CommitItem:
+    (item?: Account, action?: IFormAuthAction): ThunkAction<KnownAction> =>
     async (dispatch, getState) => {
-      const res = await client.post(`${Endpoint.ADMIN_URL}/login`, {
-        email: item?.email,
-        password: item?.password,
+      dispatch({
+        type: ActionType.LOADING,
       });
-      console.log(res);
-
-      if (res && res?.status === 200) {
-        dispatch({
-          type: ActionType.SIGNIN,
-          token: res.data,
+      if (action === IFormAuthAction.Signin) {
+        const res = await client.post(`${Endpoint.ADMIN_URL}/login`, {
+          email: item?.email,
+          password: item?.password,
         });
-      } else if (res?.status === 403) {
-        dispatch({
-          type: ActionType.SHOW_NOTIFICATION,
-          messageType: MessageType.ServerWarning,
-          content: res.data.message,
-        });
-      } else if (res?.status === 406) {
-        dispatch({
-          type: ActionType.SHOW_NOTIFICATION,
-          messageType: MessageType.ServerWarning,
-          content: 'AccountIncorrect',
-        });
-      } else {
-        dispatch({
-          type: ActionType.SHOW_NOTIFICATION,
-          messageType: MessageType.Error,
-          content: 'ServerError',
-        });
+        if (res && res?.status === 200) {
+          dispatch({
+            type: ActionType.SIGNIN,
+            token: {
+              ...res.data,
+              content: 'Signin success',
+              userId: res.data?.user?.id,
+            },
+          });
+        } else if (res?.status === 403) {
+          dispatch({
+            type: ActionType.SHOW_NOTIFICATION,
+            messageType: MessageType.ServerWarning,
+            content: res.data.message,
+          });
+        } else if (res?.status === 406) {
+          dispatch({
+            type: ActionType.SHOW_NOTIFICATION,
+            messageType: MessageType.ServerWarning,
+            content: 'AccountIncorrect',
+          });
+        } else {
+          dispatch({
+            type: ActionType.SHOW_NOTIFICATION,
+            messageType: MessageType.Error,
+            content: 'ServerError',
+          });
+        }
       }
     },
 };
@@ -126,13 +134,23 @@ export const Reducer: ReduxReducer<State, KnownAction> = (
           mode: DialogMode.Close,
         },
       };
+    case ActionType.LOADING:
+      return {
+        ...state,
+        formContext: {
+          ...state.formContext,
+          isLoading: true,
+        },
+      };
     case ActionType.SIGNIN:
       action = incomingAction as SigninAction;
-      console.log(action);
       return {
         ...state,
         token: action.token,
-        formContext: InitFormContexts,
+        formContext: {
+          ...state.formContext,
+          isComplete: true,
+        },
       };
     default:
       return {

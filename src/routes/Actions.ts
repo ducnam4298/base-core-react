@@ -7,7 +7,7 @@ export const goToPage = (type: string, params?: any) => {
   };
 };
 
-export const goHome = (params?: any) => ({
+export const goToHome = (params?: any) => ({
   type: 'Home',
   payload: params && { params },
 });

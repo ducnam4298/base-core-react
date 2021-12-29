@@ -41,7 +41,6 @@ const LayoutGrid = (props: UIProps) => {
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     const rowLength = getRowLength();
-    console.log('rowLength', rowLength);
     const withinCellIndices = withinBounds(0, props.items.length - 1);
     switch (e.key) {
       case 'ArrowRight':

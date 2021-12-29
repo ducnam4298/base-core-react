@@ -8,6 +8,7 @@ import { InitState, State } from './InitState';
 import { client, setToken, clearToken } from 'api/client';
 import { Endpoint } from 'api';
 import { ThunkAction } from 'store';
+import { Token } from 'models/user';
 
 interface FieldChangAction {
   type: string;
@@ -68,13 +69,12 @@ export const ActionCreators = {
       });
     },
   SwitchAuthenticated:
-    (action: SwitchAuthenticated, items?: any, cb?: Function): ThunkAction<KnownAction> =>
+    (action: SwitchAuthenticated, token?: Token): ThunkAction<KnownAction> =>
     (dispatch, getState) => {
       if (action === SwitchAuthenticated.LOGGEDIN) {
-        clientStorage.set('sp-flash', items.accessToken);
-        clientStorage.set('rt-flash', items.refreshToken);
-        setToken(items.accessToken);
-        cb && cb();
+        clientStorage.set('sp-flash', token?.accessToken);
+        clientStorage.set('rt-flash', token?.refreshToken);
+        setToken(token?.accessToken);
       } else {
         clientStorage.remove('sp-flash');
         clientStorage.remove('rt-flash');
@@ -88,7 +88,6 @@ export const ActionCreators = {
           permissions: [],
         });
         clearToken();
-        cb && cb();
       }
       dispatch({
         type: ActionType.SWITCH_AUTHENTICATED,
@@ -149,6 +148,14 @@ export const Reducer: ReduxReducer<State, KnownAction> = (
           permissions: [],
         };
       }
+    case ActionType.LOADING:
+      return {
+        ...state,
+        formContext: {
+          ...state.formContext,
+          isLoading: true,
+        },
+      };
     case ActionType.GET_DATA_USER:
       action = incomingAction as GetDataUserAction;
       return {

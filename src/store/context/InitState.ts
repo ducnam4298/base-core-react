@@ -1,7 +1,7 @@
 import { clientStorage, sessionStorage } from 'constant/clientStorage';
 import { Permission } from 'models/role';
 import { IFormContext, InitFormContexts } from 'models/shared';
-import { User } from 'models/user';
+import { Token, User } from 'models/user';
 export interface State {
   app?: string;
   isAuthenticated?: boolean;
@@ -9,12 +9,13 @@ export interface State {
   permissions?: Permission[];
   user?: User;
   formContext?: IFormContext;
+  token?: Token;
 }
 export const InitState: State = {
   app: 'Flash-Mobile',
-  isAuthenticated: clientStorage.get('flash-cms') ? true : false,
+  isAuthenticated: clientStorage.get('sp-flash') ? true : false,
   siteConfiguration: sessionStorage.get('config') ?? null,
-  permissions: [],
-  user: sessionStorage.get('user') ?? null,
+  permissions: sessionStorage.get('pms') ?? [],
+  user: sessionStorage.get('us') ?? null,
   formContext: InitFormContexts,
 };
