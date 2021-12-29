@@ -29,6 +29,9 @@ interface State {
   initialValues: any;
   validationSchema?: any;
   onChangeTags?: (tags: string[]) => void;
+  textButton?: string;
+  iconButton?: string;
+  disabledButton?: boolean;
   onSave?: Function;
 }
 export type RightOption = {
@@ -357,9 +360,10 @@ const FormUI = (props: Props) => {
       )}
       <ButtonUI
         type={0}
-        text={'Save'}
-        iconName={'Save'}
+        text={props.textButton ?? 'Save'}
+        iconName={props.iconButton ?? 'Save'}
         style={{ alignSelf: 'center', marginTop: '0.5rem' }}
+        disabled={props.disabledButton}
         onClick={() => formik.handleSubmit()}
       />
     </>

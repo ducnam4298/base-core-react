@@ -20,4 +20,9 @@ export interface User extends Root {
 
 export interface Token {
   accessToken?: string;
+  expires?: number;
+  refreshToken?: string;
+  type?: string;
+  content?: string;
+  userId: string;
 }

@@ -8,6 +8,7 @@ interface UIProps {
   style?: React.CSSProperties;
   styles?: IButtonStyles;
   onClick?: Function;
+  disabled?: boolean;
 }
 export enum TypeButton {
   Primary,
@@ -19,6 +20,7 @@ const ButtonUI = (props: UIProps) => {
     <PrimaryButton
       iconProps={{ iconName: props.iconName }}
       style={{ ...props.style, whiteSpace: 'nowrap', border: 'none' }}
+      disabled={props.disabled}
       styles={props.styles}
       text={props.text}
       onClick={() => props.onClick && props.onClick()}
@@ -27,6 +29,7 @@ const ButtonUI = (props: UIProps) => {
     <DefaultButton
       iconProps={{ iconName: props.iconName }}
       style={{ ...props.style, whiteSpace: 'nowrap', border: 'none' }}
+      disabled={props.disabled}
       styles={props.styles}
       text={props.text}
       onClick={() => props.onClick && props.onClick()}

@@ -170,8 +170,12 @@ const ContainerUI = (props: UIProps) => {
         <Stack
           className={'nate-team-container'}
           style={{
-            width: width ?? '70%',
+            width: width ?? '60%',
             maxWidth: maxWidth,
+            height: height ?? 'auto',
+            maxHeight: maxHeight ?? 'auto',
+            padding: '1rem',
+            margin: '0 auto',
           }}
         >
           <Stack

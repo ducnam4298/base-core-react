@@ -71,9 +71,9 @@ export enum ChoiceType {
 
 export enum IFormAuthAction {
   None = 0,
-  SignIn,
-  SignUp,
-  SignOut,
+  Signin,
+  Signup,
+  Signout,
   Forgot,
   Activation,
   SetPassword,

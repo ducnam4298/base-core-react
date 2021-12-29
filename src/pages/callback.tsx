@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { goHome } from 'routes/Actions';
+import { goToHome } from 'routes/Actions';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react';
 
 interface Props {
   dispatch: Dispatch;
   signInParams: string;
-  goHome: any;
+  goToHome: any;
 }
 
 const Callback = (props: Props) => {
@@ -15,7 +15,7 @@ const Callback = (props: Props) => {
   // const successCallback = (user: User) => {
   //   // get the user's previous location, passed during signinRedirect()
   //   //const redirectPath = user.state?user.state.path : "/" as string;
-  //   props.goHome()
+  //   props.goToHome()
   // }
 
   // by default userManager gets params from the current route
@@ -37,6 +37,6 @@ const Callback = (props: Props) => {
 //   config: state.ConfigState,
 //   context: state.ContextState
 // })
-const mapDispatchToProps = { goHome: goHome };
+const mapDispatchToProps = { goToHome: goToHome };
 
 export default connect(null, mapDispatchToProps)(Callback);

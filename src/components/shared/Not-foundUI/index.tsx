@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { PrimaryButton, Stack } from 'office-ui-fabric-react';
-import { goHome } from 'routes';
+import { goToHome } from 'routes';
 import './index.scss';
 
 const NotFoundUI = () => {
@@ -13,7 +13,7 @@ const NotFoundUI = () => {
           <h1>404</h1>
         </Stack>
         <h2>we are sorry, but the page you requested was not found</h2>
-        <PrimaryButton text={'Go Home'} className={'nate-team-home-btn'} onClick={() => dispatch(goHome())} />
+        <PrimaryButton text={'Go Home'} className={'nate-team-home-btn'} onClick={() => dispatch(goToHome())} />
       </Stack>
     </Stack>
   );
