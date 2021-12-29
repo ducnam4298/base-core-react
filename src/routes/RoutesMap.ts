@@ -15,12 +15,6 @@ const RoutesMap: RoutesProps = {
   Callback: {
     path: '/callback',
   },
-  Signin: {
-    path: '/sign-in',
-  },
-  Signup: {
-    path: '/sign-up',
-  },
   SplashStart: {
     path: '/splash-start',
   },
