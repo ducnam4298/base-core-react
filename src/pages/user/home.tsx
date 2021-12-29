@@ -32,13 +32,19 @@ interface State {
   formContext: IFormContext;
   filterParams?: IFilterParams;
   initValues: User;
+  data: {
+    listUsers?: User[];
+    totalUsers?: number;
+  };
 }
 type Props = State & typeof UserAction;
 const Home = (props: Props) => {
   useEffect(() => {
     props.HideToastMessage();
+    props.GetUsers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   const breadcrumbItems: IBreadcrumbItem[] = [
     {
       text: 'Employee',
@@ -76,7 +82,7 @@ const Home = (props: Props) => {
       case 'STT':
         const dataIndex =
           ((props.filterParams?.skip ?? 0) / (props.filterParams?.take ?? 0)) *
-          (props.filterParams?.take ?? 0) +
+            (props.filterParams?.take ?? 0) +
           (index ?? 0) +
           1;
         return <Text variant="medium">{dataIndex ?? 'N/A'}</Text>;
@@ -123,8 +129,8 @@ const Home = (props: Props) => {
     <ContainerUI
       key={'container-ui'}
       message={props.message}
-      breadcrumbItems={breadcrumbItems} onRenderNavigation={onRenderNavigation}
-
+      breadcrumbItems={breadcrumbItems}
+      onRenderNavigation={onRenderNavigation}
       width={'100%'}
       maxWidth={'75rem'}
     >

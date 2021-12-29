@@ -1,12 +1,12 @@
 version: '3.4'
 
 services:
-  AFRO-admin:
-    image: nateteam/tyrant-admin:prod
+  base-core-react:
+    image: base-core-react
     build:
-      context: ./
-      dockerfile: ./docker/Dockerfile
+      context: .
+      dockerfile: ./Dockerfile
     environment:
       NODE_ENV: production
     ports:
-      - 3000:80
+      - 3000:3000

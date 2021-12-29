@@ -8,7 +8,10 @@ export interface IFilterParams extends IQueryParams {}
 export interface State {
   message: IMessage;
   formContext?: IFormContext;
-  listUsers?: User[];
+  data: {
+    listUsers?: User[];
+    totalUsers?: number;
+  };
   user?: User;
   initValues: User;
   filterParams?: IFilterParams;
@@ -22,7 +25,10 @@ export const InitState: State = {
     content: '',
   },
   formContext: InitFormContexts,
-  listUsers: [],
+  data: {
+    listUsers: [],
+    totalUsers: 0,
+  },
   initValues: initValuesDefault,
   filterParams: InitQueryParams,
 };

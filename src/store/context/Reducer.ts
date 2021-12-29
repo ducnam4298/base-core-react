@@ -68,16 +68,16 @@ export const ActionCreators = {
       });
     },
   SwitchAuthenticated:
-    (action: SwitchAuthenticated, dataItem?: any, cb?: any): ThunkAction<KnownAction> =>
+    (action: SwitchAuthenticated, items?: any, cb?: Function): ThunkAction<KnownAction> =>
     (dispatch, getState) => {
       if (action === SwitchAuthenticated.LOGGEDIN) {
-        clientStorage.set('sp-afro4isc', dataItem.accessToken);
-        clientStorage.set('rt-afro4isc', dataItem.refreshToken);
-        setToken(dataItem.accessToken);
+        clientStorage.set('sp-flash', items.accessToken);
+        clientStorage.set('rt-flash', items.refreshToken);
+        setToken(items.accessToken);
         cb && cb();
       } else {
-        clientStorage.remove('sp-afro4isc');
-        clientStorage.remove('rt-afro4isc');
+        clientStorage.remove('sp-flash');
+        clientStorage.remove('rt-flash');
         sessionStorage.clear();
         dispatch({
           type: ActionType.GET_DATA_USER,
@@ -95,25 +95,27 @@ export const ActionCreators = {
         action,
       });
     },
-
-  GetSiteConfiguration: (): ThunkAction<KnownAction> => async (dispatch, getState) => {
-    const res = await client.get(`${Endpoint.CONFIGURATION_URL}/all`);
+  GetDataUser: (): ThunkAction<KnownAction> => async (dispatch, getState) => {
+    const res = await client.get(`${Endpoint.ADMIN_URL}/profile`);
     if (res?.status === 200) {
-      const data = (res?.data ?? [])?.map((item: any) => {
-        return {
-          configName: item.configName,
-          configValue: item.configValue,
-        };
-      });
-      sessionStorage.set('cf', data);
+      sessionStorage.set('us', res.data);
       dispatch({
-        type: ActionType.GET_CONFIGURATION,
-        configs: data,
+        type: ActionType.GET_DATA_USER,
+        user: res.data,
       });
     } else {
       ActionCreators.SwitchAuthenticated(SwitchAuthenticated.LOGGEDOUT);
     }
   },
+  GetRolesUser:
+    (permissions: any): ThunkAction<KnownAction> =>
+    async (dispatch, getState) => {
+      sessionStorage.set('pms', permissions);
+      dispatch({
+        type: ActionType.GET_ROLES_USER,
+        permissions: permissions,
+      });
+    },
 };
 //#endregion
 
@@ -124,7 +126,7 @@ export const Reducer: ReduxReducer<State, KnownAction> = (
   if (state === undefined) {
     return InitState;
   }
-  let action;
+  let action: any;
   switch (incomingAction.type) {
     case ActionType.FIELD_CHANGE:
       action = incomingAction as FieldChangAction;

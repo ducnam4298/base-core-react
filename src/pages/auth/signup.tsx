@@ -1,2 +1,4 @@
-const SignUp = () => {};
-export default SignUp;
+const Signup = () => {
+    return <h1>Signup</h1>
+};
+export default Signup;
