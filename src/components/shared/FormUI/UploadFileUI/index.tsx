@@ -177,7 +177,7 @@ const UploadFileUI = (props: UIProps) => {
         <Stack horizontal>
           <Label>
             {control.title}
-            {control.required === true && <Text style={{ color: 'red' }}>*</Text>}
+            {control.required && <Text style={{ color: 'red' }}>*</Text>}
           </Label>
         </Stack>
       )}

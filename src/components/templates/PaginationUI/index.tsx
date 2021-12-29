@@ -140,7 +140,7 @@ const PaginationUI = (props: UIProps) => {
             justifyContent: 'space-between',
           }}
         >
-          {props.isShowPageInfo && props.isShowPageInfo === true ? (
+          {props.isShowPageInfo && props.isShowPageInfo ? (
             <span
               style={{ marginTop: 5, fontSize: '0.8rem', fontWeight: 500 }}
               title="Tổng bản ghi"

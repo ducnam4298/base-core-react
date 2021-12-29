@@ -68,7 +68,7 @@ const MenuLayout = (props: Props) => {
             );
           })}
       </List>
-      {props.isOpenMenu === true && <Footer />}
+      {props.isOpenMenu && <Footer />}
     </Drawer>
   );
 };

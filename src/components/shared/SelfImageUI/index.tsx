@@ -71,7 +71,7 @@ const SelfImageUI = (props: UIProps) => {
           height: 220,
         }}
       />
-      {props.isUpload === true && (
+      {props.isUpload && (
         <Stack style={spanStyle} onClick={() => openFileSelector()}>
           <Assets.Camera style={iconStyle} />
         </Stack>
@@ -97,7 +97,7 @@ const SelfImageUI = (props: UIProps) => {
         height={'100%'}
         style={{ borderRadius: '50%' }}
       />
-      {props.isUpload === true && (
+      {props.isUpload && (
         <Stack style={spanStyle} onClick={() => openFileSelector()}>
           <Assets.Camera style={iconStyle} />
         </Stack>

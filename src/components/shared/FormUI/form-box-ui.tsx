@@ -23,7 +23,7 @@ const FormBoxUI = (props: UIProps) => {
           style={{ justifyContent: 'space-between', alignItems: 'end' }}
         >
           <Label>
-            {title} {required === true && <Text style={{ color: 'red' }}>*</Text>}
+            {title} {required && <Text style={{ color: 'red' }}>*</Text>}
           </Label>
           <ActionButton
             onClick={onToggle}
