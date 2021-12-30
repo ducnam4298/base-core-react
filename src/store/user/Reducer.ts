@@ -182,7 +182,6 @@ export const Reducer: ReduxReducer<State, KnownAction> = (
       };
     case ActionType.GET_USERS:
       action = incomingAction as GetUsersAction;
-      console.log(action);
       return {
         ...state,
         dataEmployee: action.dataEmployee,
