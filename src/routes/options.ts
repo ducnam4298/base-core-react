@@ -17,9 +17,11 @@ const options = {
     const required = (routesMap[type] && routesMap[type].required) || '';
     const parentRole = (routesMap[type] && routesMap[type].parentRole) || [];
     const roles = (routesMap[type] && routesMap[type].roles) || [];
-
-    if (isAuthenticated && !user) dispatch(ContextAction.GetDataUser());
     
+    if (isAuthenticated && !user) {
+      dispatch(ContextAction.GetDataUser());
+    }
+
     let dataPer: Permission[] = [...permissions];
     if (isAuthenticated && !permissions?.length) {
       const res = await client.get(`${Endpoint.USER_URL}/my-roles`);
@@ -29,14 +31,16 @@ const options = {
         });
         dispatch(ContextAction.GetRolesUser(dataPer));
       } else {
+        console.log('isAuthenticated');
         dispatch(ContextAction.SwitchAuthenticated(SwitchAuthenticated.LOGGEDOUT));
       }
     }
+
     let isPassedRole: boolean;
     let subRoles = (dataPer || [])
       .filter(elem => (elem?.parentPermissionName || elem?.title) === parentRole)
       .map(role => role.title);
-
+    
     if (subRoles?.length) {
       isPassedRole = (roles || []).every((value: any) => subRoles.includes(value));
       if (!isPassedRole) {

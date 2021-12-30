@@ -18,26 +18,26 @@ const screens: any = {
   Active: 'auth/active',
   Confirm: 'auth/confirm',
 
-  Employees: 'user/home',
-  'Employees/Details': 'user/details',
-  'Employees/Create': 'user/create',
-  'Employees/Edit': 'user/edit',
-  Customers: 'customer/home',
-  'Customers/Details': 'user/details',
+  Employee: 'user/home',
+  'Employee/Details': 'user/details',
+  'Employee/Create': 'user/create',
+  'Employee/Edit': 'user/edit',
+  Customer: 'customer/home',
+  'Customer/Details': 'user/details',
 
-  Roles: 'role/home',
+  Role: 'role/home',
 
-  Products: 'product/home',
+  Product: 'product/home',
 
-  Bills: 'bill/home',
+  Bill: 'bill/home',
 
-  Orders: 'order/home',
+  Order: 'order/home',
 
-  Deliveries: 'delivery/home',
+  Delivery: 'delivery/home',
 
-  Brands: 'brand/home',
+  Brand: 'brand/home',
 
-  Settings: 'setting/home',
+  Setting: 'setting/home',
 
   [NOT_FOUND]: 'not-found',
 };

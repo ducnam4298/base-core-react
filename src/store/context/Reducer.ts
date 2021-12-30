@@ -174,6 +174,12 @@ export const Reducer: ReduxReducer<State, KnownAction> = (
         ...state,
         permissions: action.permissions,
       };
+    case ActionType.SWITCH_APP:
+      action = incomingAction as SwitchAppAction;
+      return {
+        ...state,
+        app: action.app,
+      };
     default:
       return {
         ...state,

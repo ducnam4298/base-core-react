@@ -35,7 +35,7 @@ const RoutesMap: RoutesProps = {
     thunk: (dispatch: (action: any) => void, getState: () => ApplicationState) => {
       dispatch({
         type: ActionType.SWITCH_APP,
-        app: 'AFRO',
+        app: 'Flash-Mobile',
       });
     },
   },
@@ -47,7 +47,7 @@ const RoutesMap: RoutesProps = {
     thunk: (dispatch: (action: any) => void, getState: () => ApplicationState) => {
       dispatch({
         type: ActionType.SWITCH_APP,
-        app: 'AFRO',
+        app: 'Flash-Mobile',
       });
     },
   },
@@ -64,159 +64,159 @@ const RoutesMap: RoutesProps = {
     path: '/verify',
     required: ['notAuth'],
   },
-  Employees: {
+  Employee: {
     path: '/employees',
     required: ['auth'],
-    parentRole: 'Users',
+    parentRole: 'Employee',
     roles: ['View'],
     thunk: (dispatch: (action: any) => void, getState: () => ApplicationState) => {
       dispatch({
         type: ActionType.SWITCH_APP,
-        app: 'AFRO',
+        app: 'Flash-Mobile',
       });
     },
   },
-  'Employees/Details': {
+  'Employee/Details': {
     path: '/employees/:userId/details',
     required: ['auth'],
-    parentRole: 'Users',
+    parentRole: 'Employee',
     roles: ['View'],
     thunk: (dispatch: (action: any) => void, getState: () => ApplicationState) => {
       dispatch({
         type: ActionType.SWITCH_APP,
-        app: 'AFRO',
+        app: 'Flash-Mobile',
       });
     },
   },
-  'Employees/Create': {
+  'Employee/Create': {
     path: '/employees/create',
     required: ['auth'],
-    parentRole: 'Users',
-    roles: ['View'],
+    parentRole: 'Employee',
+    roles: ['Create'],
     thunk: (dispatch: (action: any) => void, getState: () => ApplicationState) => {
       dispatch({
         type: ActionType.SWITCH_APP,
-        app: 'AFRO',
+        app: 'Flash-Mobile',
       });
     },
   },
-  'Employees/Edit': {
+  'Employee/Edit': {
     path: '/employees/:userId/edit',
     required: ['auth'],
-    parentRole: 'Users',
-    roles: ['View'],
+    parentRole: 'Employee',
+    roles: ['Update'],
     thunk: (dispatch: (action: any) => void, getState: () => ApplicationState) => {
       dispatch({
         type: ActionType.SWITCH_APP,
-        app: 'AFRO',
+        app: 'Flash-Mobile',
       });
     },
   },
-  Customers: {
+  Customer: {
     path: '/customers',
     required: ['auth'],
-    parentRole: 'Users',
+    parentRole: 'Employee',
     roles: ['View'],
     thunk: (dispatch: (action: any) => void, getState: () => ApplicationState) => {
       dispatch({
         type: ActionType.SWITCH_APP,
-        app: 'AFRO',
+        app: 'Flash-Mobile',
       });
     },
   },
-  'Customers/Details': {
+  'Customer/Details': {
     path: '/customers/:customerId/details',
     required: ['auth'],
-    parentRole: 'Users',
+    parentRole: 'User',
     roles: ['View'],
     thunk: (dispatch: (action: any) => void, getState: () => ApplicationState) => {
       dispatch({
         type: ActionType.SWITCH_APP,
-        app: 'AFRO',
+        app: 'Flash-Mobile',
       });
     },
   },
-  Roles: {
+  Role: {
     path: '/roles',
     required: ['auth'],
-    parentRole: 'Roles',
+    parentRole: 'Role',
     roles: ['View'],
     thunk: (dispatch: (action: any) => void, getState: () => ApplicationState) => {
       dispatch({
         type: ActionType.SWITCH_APP,
-        app: 'AFRO',
+        app: 'Flash-Mobile',
       });
     },
   },
-  Products: {
+  Product: {
     path: '/products',
     required: ['auth'],
-    parentRole: 'Products',
+    parentRole: 'Product',
     roles: ['View'],
     thunk: (dispatch: (action: any) => void, getState: () => ApplicationState) => {
       dispatch({
         type: ActionType.SWITCH_APP,
-        app: 'AFRO',
+        app: 'Flash-Mobile',
       });
     },
   },
-  Bills: {
+  Bill: {
     path: '/bills',
     required: ['auth'],
-    parentRole: 'Bills',
+    parentRole: 'Bill',
     roles: ['View'],
     thunk: (dispatch: (action: any) => void, getState: () => ApplicationState) => {
       dispatch({
         type: ActionType.SWITCH_APP,
-        app: 'AFRO',
+        app: 'Flash-Mobile',
       });
     },
   },
-  Orders: {
+  Order: {
     path: '/orders',
     required: ['auth'],
-    parentRole: 'Orders',
+    parentRole: 'Order',
     roles: ['View'],
     thunk: (dispatch: (action: any) => void, getState: () => ApplicationState) => {
       dispatch({
         type: ActionType.SWITCH_APP,
-        app: 'AFRO',
+        app: 'Flash-Mobile',
       });
     },
   },
-  Deliveries: {
+  Delivery: {
     path: '/deliveries',
     required: ['auth'],
-    parentRole: 'Deliveries',
+    parentRole: 'Delivery',
     roles: ['View'],
     thunk: (dispatch: (action: any) => void, getState: () => ApplicationState) => {
       dispatch({
         type: ActionType.SWITCH_APP,
-        app: 'AFRO',
+        app: 'Flash-Mobile',
       });
     },
   },
-  Brands: {
+  Brand: {
     path: '/brands',
     required: ['auth'],
-    parentRole: 'Brands',
+    parentRole: 'Brand',
     roles: ['View'],
     thunk: (dispatch: (action: any) => void, getState: () => ApplicationState) => {
       dispatch({
         type: ActionType.SWITCH_APP,
-        app: 'AFRO',
+        app: 'Flash-Mobile',
       });
     },
   },
-  Settings: {
+  Setting: {
     path: '/settings',
     required: ['auth'],
-    parentRole: 'Settings',
-    roles: ['Settings'],
+    parentRole: 'Setting',
+    roles: ['Setting'],
     thunk: (dispatch: (action: any) => void, getState: () => ApplicationState) => {
       dispatch({
         type: ActionType.SWITCH_APP,
-        app: 'AFRO',
+        app: 'Flash-Mobile',
       });
     },
   },
