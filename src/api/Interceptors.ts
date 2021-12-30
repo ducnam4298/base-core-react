@@ -15,17 +15,17 @@ axios.interceptors.response.use(
       if (urlRefreshToken === 'refreshtoken') {
         handleError();
       } else {
-        const refreshToken = clientStorage.get('rt-afro4isc');
+        const refreshToken = clientStorage.get('rt-flash');
 
         if (refreshToken) {
           axios.defaults.headers.common['Authorization'] = `Bearer ${refreshToken}`;
 
           const res: AxiosResponse<any> = await axios.post(`${Endpoint.REFRESH_TOKEN}`, {
-            oldToken: clientStorage.get('sp-afro4isc'),
+            oldToken: clientStorage.get('sp-flash'),
           });
           if (res.status === 200) {
-            clientStorage.set('sp-afro4isc', res.data.accessToken);
-            clientStorage.set('rt-afro4isc', res.data.refreshToken);
+            clientStorage.set('sp-flash', res.data.accessToken);
+            clientStorage.set('rt-flash', res.data.refreshToken);
 
             setToken(res.data.accessToken);
 
@@ -48,8 +48,8 @@ export const clearToken = async () => {
   axios.defaults.headers.common['Authorization'] = '';
 };
 const handleError = () => {
-  clientStorage.remove('sp-afro4isc');
-  clientStorage.remove('rt-afro4isc');
+  clientStorage.remove('sp-flash');
+  clientStorage.remove('rt-flash');
   sessionStorage.clear();
   clearToken();
   store.dispatch({
