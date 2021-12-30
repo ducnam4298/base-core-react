@@ -1,5 +1,5 @@
 import { Reducer as ReduxReducer } from 'redux';
-import InitState, { State } from './InitState';
+import { InitState, State } from './InitState';
 
 //#region declare actions
 type KnownAction = any;
