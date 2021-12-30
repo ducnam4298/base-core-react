@@ -100,8 +100,6 @@ const RequestClient = class {
       });
   }
   handleError(error: any) {
-    // console.log(error.response);
-
     if (error.response && error.response.status === 401) {
       // xử lý logout đoạn này
     }

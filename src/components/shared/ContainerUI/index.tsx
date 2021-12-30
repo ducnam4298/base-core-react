@@ -75,7 +75,7 @@ const ContainerUI = (props: UIProps) => {
   } = props;
 
   useEffect(() => {
-    if (message && message.hidden === false) {
+    if (message && message.hidden) {
       setShow(true);
     }
   }, [message]);
@@ -116,7 +116,7 @@ const ContainerUI = (props: UIProps) => {
           hideMessage={hideMessage}
         />
       )}
-      {allowed === false ? (
+      {allowed ? (
         <LoadingUI />
       ) : !noCardTag ? (
         <>

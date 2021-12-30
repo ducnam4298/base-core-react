@@ -31,7 +31,6 @@ const options = {
         });
         dispatch(ContextAction.GetRolesUser(dataPer));
       } else {
-        console.log('isAuthenticated');
         dispatch(ContextAction.SwitchAuthenticated(SwitchAuthenticated.LOGGEDOUT));
       }
     }
