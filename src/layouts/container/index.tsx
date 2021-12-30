@@ -4,6 +4,8 @@ import { LocationState } from 'redux-first-router';
 import { useStyles } from 'layouts/config';
 import MenuLayout from 'layouts/menu';
 import Content from 'pages/content';
+import { ApplicationState } from 'store';
+import { connect } from 'react-redux';
 
 interface State {
   // isAuthenticated?: boolean;
@@ -11,6 +13,7 @@ interface State {
   setIsOpenMenu: () => void;
   page?: string;
   locationType?: LocationState['type'];
+  isAuthenticated?: boolean;
 }
 
 type Props = State;
@@ -23,7 +26,7 @@ const ContainerLayout = (props: Props) => {
   };
   return (
     <>
-      <MenuLayout {...MenuProps} />
+      {props.isAuthenticated && <MenuLayout {...MenuProps} />}
       <main key={'main'} className={ClassName.content}>
         <div key={'main-content'} className={ClassName.appBarSpacer} />
         <Container maxWidth="lg" className={ClassName.container}>
@@ -34,4 +37,10 @@ const ContainerLayout = (props: Props) => {
   );
 };
 
-export default ContainerLayout;
+const mapStateToProps = (state: ApplicationState) => ({
+  application: state.ConfigState.application,
+  user: state.ContextState.user,
+  isAuthenticated: state.ContextState.isAuthenticated,
+});
+
+export default connect(mapStateToProps)(ContainerLayout);

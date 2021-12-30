@@ -149,6 +149,7 @@ const ContainerUI = (props: UIProps) => {
                   padding: '1rem',
                   boxShadow: '0 2px 6px #0000001f',
                   margin: '0 auto',
+                  justifyContent: 'center',
                 }}
               >
                 <Stack
@@ -176,6 +177,7 @@ const ContainerUI = (props: UIProps) => {
             maxHeight: maxHeight ?? 'auto',
             padding: '1rem',
             margin: '0 auto',
+            justifyContent: 'center',
           }}
         >
           <Stack

@@ -17,7 +17,7 @@ const options = {
     const required = (routesMap[type] && routesMap[type].required) || '';
     const parentRole = (routesMap[type] && routesMap[type].parentRole) || [];
     const roles = (routesMap[type] && routesMap[type].roles) || [];
-    
+
     if (isAuthenticated && !user) {
       dispatch(ContextAction.GetDataUser());
     }
@@ -40,7 +40,7 @@ const options = {
     let subRoles = (dataPer || [])
       .filter(elem => (elem?.parentPermissionName || elem?.title) === parentRole)
       .map(role => role.title);
-    
+
     if (subRoles?.length) {
       isPassedRole = (roles || []).every((value: any) => subRoles.includes(value));
       if (!isPassedRole) {
@@ -56,8 +56,12 @@ const options = {
       !isAuthenticated &&
       getState().location.type !== 'Activation'
     ) {
+      const splashStart = redirect({ type: 'SplashStart' });
+      dispatch(splashStart);
+      const splashWaiting = redirect({ type: 'SplashWaiting' });
+      setTimeout(() => dispatch(splashWaiting), 1000);
       const action = redirect({ type: 'Signin' });
-      dispatch(action);
+      setTimeout(() => dispatch(action), 3000);
     } else if (
       isAuthenticated &&
       !required.includes('auth') &&

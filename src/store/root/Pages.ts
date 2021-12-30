@@ -6,17 +6,18 @@ export default Pages;
 const screens: any = {
   Callback: 'Callback',
 
-  SplashStart: 'auth/splash-start',
-  SplashWaiting: 'auth/splash-waiting',
-
   Home: 'home/home',
 
   Self: 'self/home',
+
   Signin: 'auth/signin',
   Signup: 'auth/signup',
   Forgot: 'auth/forgot',
   Active: 'auth/active',
   Confirm: 'auth/confirm',
+
+  SplashStart: 'auth/splash-start',
+  SplashWaiting: 'auth/splash-waiting',
 
   Employee: 'user/home',
   'Employee/Details': 'user/details',
