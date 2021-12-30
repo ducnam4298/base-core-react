@@ -11,20 +11,18 @@ import {
 
 import { ContainerUI, ListItemUI } from 'components/shared';
 
-import { User } from 'models/user';
 import { IMessage } from 'models/message';
 import { IFormContext } from 'models/shared';
 
 import { goToPage } from 'routes';
 import { ApplicationState } from 'store';
 import { ActionCreators as UserAction } from 'store/user';
-import { IFilterParams } from 'store/user/InitState';
-
+import { ButtonUI } from 'components/templates';
+import { User } from 'models/user';
 import { dateConverter } from 'constant/dateConverter';
 import { DropdownVer2UI } from 'components/shared/FormUI';
-import { ButtonUI } from 'components/templates';
-
-import { Columns, initValuesDefault, MenuActions } from './configs';
+import { Columns, MenuActions } from '../employee/configs';
+import { IFilterParams } from 'store/user/InitState';
 interface State {
   goToPage: Function;
   message: IMessage;
@@ -32,7 +30,7 @@ interface State {
   formContext: IFormContext;
   filterParams?: IFilterParams;
   initValues: User;
-  data: {
+  dataUser: {
     listUsers?: User[];
     totalUsers?: number;
   };
@@ -44,10 +42,10 @@ const Home = (props: Props) => {
     props.GetUsers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  
   const breadcrumbItems: IBreadcrumbItem[] = [
     {
-      text: 'Employee',
+      text: 'Customer',
       key: 'd1',
       style: { color: '#fff', fontStyle: 'italic' },
     },
@@ -58,8 +56,8 @@ const Home = (props: Props) => {
         text={'Create New'}
         iconName={'Add'}
         onClick={() => {
-          props.FieldChange('initValues', initValuesDefault);
-          props.goToPage('Employees/Create');
+          // props.FieldChange('initValues', initValuesDefault);
+          // props.goToPage('Employee/Create');
         }}
       />
     );
@@ -112,19 +110,6 @@ const Home = (props: Props) => {
         return <Text variant="medium">{fieldContent}</Text>;
     }
   };
-  const generationItems = () => {
-    let listItems: User[] = [];
-    const user: User = {
-      fullName: 'Ngô Đức Nam',
-      dob: new Date(),
-      email: 'ducnam4298@gmail.com',
-      modifiedDate: new Date(),
-    };
-    for (let i = 0; i < 20; i++) {
-      listItems.push(user);
-    }
-    return listItems;
-  };
   return (
     <ContainerUI
       key={'container-ui'}
@@ -140,8 +125,8 @@ const Home = (props: Props) => {
         onItemInvoked={undefined}
         selectionMode={undefined}
         data={{
-          listItems: generationItems(),
-          totalNumber: 100,
+          listItems: props.dataUser.listUsers,
+          totalNumber: props.dataUser.totalUsers,
         }}
         formContext={props.formContext}
         filterName={'filterParams'}

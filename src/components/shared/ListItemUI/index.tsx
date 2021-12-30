@@ -151,7 +151,7 @@ const ListItemUI = (props: UIProps) => {
           />
         </ScrollablePane>
       </div>
-      {props.formContext?.isLoading === false && props.filterParams && (
+      {!props.formContext?.isLoading && props.filterParams && (
         <PaginationUI
           isShowPageInfo
           pageSize={props.filterParams.take}

@@ -19,7 +19,7 @@ export const initValuesDefault: User = {
   coverImage: undefined,
   profileImage: undefined,
   contract: undefined,
-  // address: undefined,
+  address: undefined,
   pob: undefined,
 };
 export const validationCreateSchema = Yup.object().shape({
@@ -34,7 +34,7 @@ export const validationCreateSchema = Yup.object().shape({
   profileImage: Yup.string().required(FieldRequired),
   contract: Yup.array().nullable(false).required(FieldRequired),
   descriptions: Yup.string().required(FieldRequired),
-  // address: Yup.string().required(FieldRequired),
+  address: Yup.string().required(FieldRequired),
   pob: Yup.string().required(FieldRequired),
 });
 
@@ -93,6 +93,20 @@ export const Forms: IForm[] = [
             boxNumber: 0,
           },
           {
+            id: 'address',
+            type: ControlType.Text,
+            title: 'Address',
+            placeholder: 'Address',
+            maxLength: 30,
+            required: true,
+            boxNumber: 0,
+          
+          },
+        ],
+      },
+      {
+        controls: [
+          {
             id: 'gender',
             type: ControlType.Choice,
             choiceDisplay: ChoiceType.Dropdown,
@@ -122,7 +136,6 @@ export const Forms: IForm[] = [
             id: 'profileImage',
             type: ControlType.Attachment,
             choiceDisplay: ChoiceType.Image,
-            // title: 'Profile Image',
             multiple: false,
             accept: ['.png', '.jpg', '.jpeg'],
             required: true,
@@ -136,7 +149,6 @@ export const Forms: IForm[] = [
             id: 'coverImage',
             type: ControlType.Attachment,
             choiceDisplay: ChoiceType.Image,
-            // title: 'Cover Image',
             multiple: false,
             accept: ['.png', '.jpg', '.jpeg'],
             required: true,
@@ -162,7 +174,6 @@ export const Forms: IForm[] = [
             id: 'contract',
             type: ControlType.Attachment,
             choiceDisplay: ChoiceType.File,
-            // title: 'Contract',
             multiple: false,
             accept: ['.doc', '.docx', '.xls', '.xlsx'],
             required: true,

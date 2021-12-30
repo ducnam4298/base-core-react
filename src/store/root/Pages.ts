@@ -16,15 +16,14 @@ const screens: any = {
   Active: 'auth/active',
   Confirm: 'auth/confirm',
 
-  SplashStart: 'auth/splash-start',
-  SplashWaiting: 'auth/splash-waiting',
+  Loading: 'auth/waiting',
 
-  Employee: 'user/home',
-  'Employee/Details': 'user/details',
-  'Employee/Create': 'user/create',
-  'Employee/Edit': 'user/edit',
-  Customer: 'customer/home',
-  'Customer/Details': 'user/details',
+  Employee: 'user/employee/home',
+  'Employee/Details': 'user/employee/details',
+  'Employee/Create': 'user/employee/create',
+  'Employee/Edit': 'user/employee/edit',
+  Customer: 'user/customer/home',
+  'Customer/Details': 'user/customer/details',
 
   Role: 'role/home',
 

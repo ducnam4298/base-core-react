@@ -56,12 +56,9 @@ const options = {
       !isAuthenticated &&
       getState().location.type !== 'Activation'
     ) {
-      const splashStart = redirect({ type: 'SplashStart' });
-      dispatch(splashStart);
-      const splashWaiting = redirect({ type: 'SplashWaiting' });
-      setTimeout(() => dispatch(splashWaiting), 1000);
+      dispatch(redirect({ type: 'Loading' }));
       const action = redirect({ type: 'Signin' });
-      setTimeout(() => dispatch(action), 3000);
+      setTimeout(() => dispatch(action), 2000);
     } else if (
       isAuthenticated &&
       !required.includes('auth') &&

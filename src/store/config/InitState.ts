@@ -93,14 +93,14 @@ export const InitState: State = {
         },
         {
           title: 'Role',
-          name: 'Roles',
+          name: 'Role',
           url: '/roles',
           icon: Assets.MemberSecurity,
           roles: ['Role'],
         },
         {
           title: 'Setting',
-          name: 'Settings',
+          name: 'Setting',
           url: '/settings',
           icon: Assets.Setting,
           roles: ['Setting'],

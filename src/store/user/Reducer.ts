@@ -9,7 +9,11 @@ import { InitFormContexts } from 'models/shared';
 
 interface GetUsersAction {
   type: string;
-  data: {
+  dataEmployee: {
+    listEmployees?: User[];
+    totalEmployees?: number;
+  };
+  dataUser: {
     listUsers?: User[];
     totalUsers?: number;
   };
@@ -17,6 +21,7 @@ interface GetUsersAction {
 interface GetUserAction {
   type: string;
   user?: User;
+  employee?: User;
 }
 interface FieldChangeAction {
   type: string;
@@ -33,15 +38,58 @@ interface ShowToastMessageAction {
 type KnownAction = GetUsersAction | GetUserAction | FieldChangeAction | ShowToastMessageAction;
 
 export const ActionCreators = {
+  GetEmployees: (): ThunkAction<KnownAction> => async (dispatch, getState) => {
+    const state = getState().UserState;
+    const res = await client.get(Endpoint.ADMIN_URL, state.filterParams);
+    if (res && res.status === 200) {
+      dispatch({
+        type: ActionType.GET_USERS,
+        dataEmployee: {
+          listEmployees: res.data.items,
+          totalEmployees: res.data.count,
+        },
+        dataUser: {
+          listUsers: [],
+          totalUsers: 0,
+        },
+      });
+    } else {
+      dispatch({
+        type: ActionType.SHOW_NOTIFICATION,
+        messageType: MessageType.ServerWarning,
+        content: 'Users not found',
+      });
+    }
+  },
+  GetEmployee: (): ThunkAction<KnownAction> => async (dispatch, getState) => {
+    const state = getState().UserState;
+    const res = await client.get(Endpoint.ADMIN_URL, state.filterParams);
+    if (res && res.status === 200) {
+      dispatch({
+        type: ActionType.GET_USER,
+        employee: res.data,
+      });
+    } else {
+      dispatch({
+        type: ActionType.SHOW_NOTIFICATION,
+        messageType: MessageType.ServerWarning,
+        content: 'User not found',
+      });
+    }
+  },
   GetUsers: (): ThunkAction<KnownAction> => async (dispatch, getState) => {
     const state = getState().UserState;
     const res = await client.get(Endpoint.USER_URL, state.filterParams);
     if (res && res.status === 200) {
       dispatch({
         type: ActionType.GET_USERS,
-        data: {
+        dataUser: {
           listUsers: res.data.items,
           totalUsers: res.data.count,
+        },
+        dataEmployee: {
+          listEmployees: [],
+          totalEmployees: 0,
         },
       });
     } else {
@@ -134,9 +182,11 @@ export const Reducer: ReduxReducer<State, KnownAction> = (
       };
     case ActionType.GET_USERS:
       action = incomingAction as GetUsersAction;
+      console.log(action);
       return {
         ...state,
-        data: action.data,
+        dataEmployee: action.dataEmployee,
+        dataUser: action.dataUser,
         formContext: InitFormContexts,
       };
     case ActionType.GET_USER:
@@ -144,6 +194,7 @@ export const Reducer: ReduxReducer<State, KnownAction> = (
       return {
         ...state,
         user: action.user,
+        employee: action.employee,
         initValues: action.user,
         formContext: InitFormContexts,
       };
