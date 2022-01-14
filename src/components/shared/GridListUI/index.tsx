@@ -1,6 +1,6 @@
 import React, { useState, createRef } from 'react';
 
-import GridCellItem from './grid-cell-item';
+import GridCellItem from './grid-cell';
 import styled from 'styled-components';
 
 const StyledRow = styled.div`
@@ -22,7 +22,7 @@ interface UIProps {
   childrenNode: (item: any, index: number) => React.ReactNode;
 }
 
-const LayoutGrid = (props: UIProps) => {
+const GridListUI = (props: UIProps) => {
   const [activeCellInd, setActiveCellInd] = useState(0);
   const grid = createRef<HTMLDivElement>();
 
@@ -87,4 +87,4 @@ const LayoutGrid = (props: UIProps) => {
   );
 };
 
-export default LayoutGrid;
+export default GridListUI;

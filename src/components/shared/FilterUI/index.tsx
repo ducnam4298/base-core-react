@@ -80,7 +80,7 @@ interface UIProps {
   ActionButton: () => void;
 }
 
-const FilterItemsUI = (props: UIProps) => {
+const FilterUI = (props: UIProps) => {
   return (
     <Row xs="1" sm="2" md="3" lg="4">
       {props.filterOptions.map(filterOption => {
@@ -206,4 +206,4 @@ const FilterItemsUI = (props: UIProps) => {
   );
 };
 
-export default FilterItemsUI;
+export default FilterUI;

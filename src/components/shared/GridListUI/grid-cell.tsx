@@ -9,7 +9,7 @@ interface UIProps {
   onClick: Function;
 }
 
-const GridCellItem = (props: UIProps) => {
+const GridCell = (props: UIProps) => {
   const cellSpan = createRef<HTMLSpanElement>();
   useEffect(() => {
     if (props.isActiveCell) {
@@ -25,4 +25,4 @@ const GridCellItem = (props: UIProps) => {
   );
 };
 
-export default GridCellItem;
+export default GridCell;
