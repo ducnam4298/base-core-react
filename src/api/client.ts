@@ -14,7 +14,7 @@ export const clearToken = async () => {
   axios.defaults.headers.common['Authorization'] = '';
 };
 
-const requestAbordCode = 'ECONNABORTED';
+const requestAboutCode = 'ECONNABORTED';
 
 axios.defaults.baseURL = process.env.REACT_APP_API_GATEWAY;
 axios.defaults.headers.post['Content-Type'] = 'application/json';
@@ -103,7 +103,7 @@ const RequestClient = class {
     if (error.response && error.response.status === 401) {
       // xử lý logout đoạn này
     }
-    if (error.code === requestAbordCode || ('response' in error && error.response === undefined)) {
+    if (error.code === requestAboutCode || ('response' in error && error.response === undefined)) {
       // delay(1000);
       error.recall = true;
     }
