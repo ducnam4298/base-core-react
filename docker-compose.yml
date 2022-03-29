@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   base-core-react:
-    container:  react-app-redux
+    container_name:  react-app-redux
     image: base-core-react
     build:
       context: .
