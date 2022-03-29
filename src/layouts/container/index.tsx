@@ -26,7 +26,8 @@ const ContainerLayout = (props: Props) => {
   };
   return (
     <>
-      {props.isAuthenticated && <MenuLayout {...MenuProps} />}
+      {/* {props.isAuthenticated && <MenuLayout {...MenuProps} />} */}
+      <MenuLayout {...MenuProps} />
       <main key={'main'} className={ClassName.content}>
         <div key={'main-content'} className={ClassName.appBarSpacer} />
         <Container maxWidth="lg" className={ClassName.container}>

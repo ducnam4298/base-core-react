@@ -44,7 +44,28 @@ const HeaderLayout = (props: Props) => {
       </Toolbar>
     </AppBar>
   ) : (
-    <></>
+    <AppBar
+      position="absolute"
+      className={clsx(ClassName.appBar, props.isOpenMenu && ClassName.appBarShift)}
+    >
+      <Toolbar className={ClassName.toolbar}>
+        <Typography component="h1" variant="h6" color="inherit" noWrap className={ClassName.title}>
+          {props.application.title}
+        </Typography>
+        <IconButton color="inherit">
+          <Badge badgeContent={4} color="secondary">
+            <Notifications />
+          </Badge>
+        </IconButton>
+        <IconButton color="inherit">
+          <Avatar
+            className={clsx(ClassName.avatar)}
+            src={props.user?.profileImage ?? ''}
+            variant={'circular'}
+          />
+        </IconButton>
+      </Toolbar>
+    </AppBar>
   );
 };
 const mapStateToProps = (state: ApplicationState) => ({
