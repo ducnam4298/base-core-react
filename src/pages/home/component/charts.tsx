@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useTheme } from '@material-ui/core';
 import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
-import Title from '../title';
+import Title from './title';
 
 // Generate Sales Data
 const createData = (time: string, amount?: number) => {

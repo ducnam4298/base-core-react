@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link, Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
-import Title from '../title';
+import Title from './title';
 
 // Generate Order Data
 function createData(
