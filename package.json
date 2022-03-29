@@ -43,6 +43,10 @@
     "yup": "^0.32.11"
   },
   "scripts": {
+    "i": "yarn install",
+    "a": "yarn add",
+    "r":"yarn remove",
+    "dev": "docker-compose down -v && docker-compose build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
