@@ -1,12 +1,14 @@
-version: '3.4'
+version: '3.8'
 
 services:
   base-core-react:
+    container:  react-app-redux
     image: base-core-react
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: ./docker/Dockerfile
+      target: production
     environment:
       NODE_ENV: production
     ports:
-      - 3000:3000
+      - 8080:8080
