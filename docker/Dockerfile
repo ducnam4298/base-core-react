@@ -5,6 +5,7 @@ WORKDIR /app
 # Cache and Install dependencies
 COPY package.json .
 COPY yarn.lock .
+RUN apk add --no-cache git openssh
 RUN yarn install --production
 # Copy app files
 COPY . .
