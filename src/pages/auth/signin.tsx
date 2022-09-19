@@ -31,7 +31,7 @@ interface State {
 type Props = State & typeof AuthAction;
 
 const Signin = (props: Props) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<any>();
   useEffect(() => {
     if (props.location.payload?.params?.content) {
       const content = props.location.payload?.params?.content;
@@ -41,7 +41,7 @@ const Signin = (props: Props) => {
   }, [props.location.payload]);
 
   useEffect(() => {
-    if (props.formContext?.isComplete && props.token && props.token) {
+    if (props.formContext?.isComplete && props.token) {
       dispatch(ContextAction.SwitchAuthenticated(SwitchAuthenticated.LOGGEDIN, props.token));
       props.goToHome({ content: props.token?.content });
     }

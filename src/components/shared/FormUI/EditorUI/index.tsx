@@ -40,7 +40,6 @@ const EditorUI = (props: UIProps) => {
             'undo redo | styleselect | fontsizeselect| code | bold italic | alignleft aligncenter alignright alignjustify | outdent indent ',
         }}
         onEditorChange={onChangeEditor}
-        outputFormat="html"
         toolbar="code"
 
       />
