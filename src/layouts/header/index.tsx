@@ -30,7 +30,7 @@ const HeaderLayout = (props: Props) => {
           {props.application.title}
         </Typography>
         <IconButton color="inherit">
-          <Badge badgeContent={4} color="secondary">
+          <Badge badgeContent={4} color="secondary" overlap='rectangular'>
             <Notifications />
           </Badge>
         </IconButton>
@@ -53,7 +53,7 @@ const HeaderLayout = (props: Props) => {
           {props.application.title}
         </Typography>
         <IconButton color="inherit">
-          <Badge badgeContent={4} color="secondary">
+          <Badge badgeContent={4} color="secondary" overlap='rectangular'>
             <Notifications />
           </Badge>
         </IconButton>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Image, Label, ProgressIndicator, Stack } from 'office-ui-fabric-react';
-import * as Assets from 'assets';
+import { Label, ProgressIndicator, Stack } from 'office-ui-fabric-react';
 import { Grid } from '@material-ui/core';
 import { useStyles } from './config/sign-css';
 import { ContainerUI } from 'components/shared';
@@ -33,10 +32,6 @@ const SplashWaiting = () => {
             textShadow: '2px 2px 3px #00000029',
           }}
         >
-          {/* <Image
-        src={Assets.SrcLogoAfro}
-        styles={{ root: { maxWidth: "50%" }, image: { maxWidth: "100%" } }}
-      /> */}
           <Label style={{ fontSize: '1.5rem' }}>WELCOME</Label>
           <ProgressIndicator
             styles={{
