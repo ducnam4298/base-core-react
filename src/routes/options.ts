@@ -1,4 +1,5 @@
-// import { client, Endpoint } from 'api';
+// import { Endpoint } from 'api';
+// import { client } from 'api/client';
 // import { unionBy } from 'lodash';
 // import { SwitchAuthenticated } from 'models/context';
 // import { Permission, Role } from 'models/role';

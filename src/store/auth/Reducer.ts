@@ -5,7 +5,8 @@ import { ThunkAction } from 'store';
 import { DialogMode, MessageType } from 'models/message';
 import { InitFormContexts } from 'models/shared';
 import { Account } from 'models/account';
-import { client, Endpoint } from 'api';
+import { Endpoint } from 'api';
+import { client } from 'api/client';
 import { Token } from 'models/user';
 import { IFormAuthAction } from 'models/form';
 

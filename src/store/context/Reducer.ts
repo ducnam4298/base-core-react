@@ -1,11 +1,11 @@
-// import { Endpoint } from 'api';
 import { clientStorage, sessionStorage } from 'constant/clientStorage';
 import { Reducer as ReduxReducer } from 'redux';
 import { ActionType } from './ActionType';
 import { SwitchAuthenticated, IUser } from 'models/context';
 import { InitState, State } from './InitState';
 
-import { client, setToken, clearToken } from 'api/client';
+import { setToken, clearToken } from 'api/client';
+import { client } from 'api/client';
 import { Endpoint } from 'api';
 import { ThunkAction } from 'store';
 import { Token } from 'models/user';
