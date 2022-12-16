@@ -83,4 +83,4 @@ const mapDispatchToProps = {
   goToPage: goToPage,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MenuLayout as any);
+export default connect(mapStateToProps, mapDispatchToProps)(MenuLayout);

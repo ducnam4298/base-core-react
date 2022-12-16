@@ -13,7 +13,7 @@ export interface State {
 }
 export const InitState: State = {
   app: 'Flash-Mobile',
-  isAuthenticated: clientStorage.get('sp-flash') ? true : false,
+  isAuthenticated: clientStorage.get('accessToken') ? true : false,
   siteConfiguration: sessionStorage.get('config') ?? null,
   permissions: sessionStorage.get('pms') ?? [],
   user: sessionStorage.get('us') ?? null,

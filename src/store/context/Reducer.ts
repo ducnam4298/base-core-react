@@ -72,12 +72,12 @@ export const ActionCreators = {
     (action: SwitchAuthenticated, token?: Token): ThunkAction<KnownAction> =>
     (dispatch, getState) => {
       if (action === SwitchAuthenticated.LOGGEDIN) {
-        clientStorage.set('sp-flash', token?.accessToken);
-        clientStorage.set('rt-flash', token?.refreshToken);
+        clientStorage.set('accessToken', token?.accessToken);
+        clientStorage.set('refreshToken', token?.refreshToken);
         setToken(token?.accessToken);
       } else {
-        clientStorage.remove('sp-flash');
-        clientStorage.remove('rt-flash');
+        clientStorage.remove('accessToken');
+        clientStorage.remove('refreshToken');
         sessionStorage.clear();
         dispatch({
           type: ActionType.GET_DATA_USER,

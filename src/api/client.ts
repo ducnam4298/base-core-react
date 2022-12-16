@@ -1,5 +1,4 @@
-// import axios from './Interceptors'
-import axios from 'axios';
+import axios from './Interceptors'
 import { clientStorage } from 'constant/clientStorage';
 
 /**
@@ -22,7 +21,7 @@ axios.defaults.timeout = 360000;
 
 const RequestClient = class {
   constructor() {
-    let access_token = clientStorage.get('sp-flash');
+    let access_token = clientStorage.get('accessToken');
     if (access_token) {
       this.init(access_token);
     } else {
