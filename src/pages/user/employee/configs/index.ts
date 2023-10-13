@@ -32,7 +32,7 @@ export const validationCreateSchema = Yup.object().shape({
   gender: Yup.number().required(FieldRequired),
   coverImage: Yup.string().required(FieldRequired),
   profileImage: Yup.string().required(FieldRequired),
-  contract: Yup.array().nullable(false).required(FieldRequired),
+  contract: Yup.array().defined().required(FieldRequired),
   descriptions: Yup.string().required(FieldRequired),
   address: Yup.string().required(FieldRequired),
   pob: Yup.string().required(FieldRequired),
